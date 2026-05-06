@@ -12,4 +12,4 @@
 
 [www.yahubaba.com](https://www.yahubaba.com)
 
-[Youtube Channel](https://www.youtube.com/yahoobaba)
+[Youtube Channel](https://www.youtube.com/@yahu-baba)
