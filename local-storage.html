@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalStorage</title>
+  </head>
+  <body>
+    <input type="text" id="username" />
+    <button id="saveBtn">Save</button>
+
+    <script>
+      let input = document.querySelector("#username");
+      let button = document.querySelector("#saveBtn");
+
+      input.value = localStorage.getItem("username") || "";
+
+      button.addEventListener("click", () => {
+        localStorage.setItem("username", input.value);
+        alert("Saved!");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .dark {
+        background: #252525;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h2></h2>
+
+    <button onclick="removeFunction()">Remove LocalStorage</button>
+
+    <script>
+      let user = localStorage.getItem("username") || "";
+      let currentTheme = localStorage.getItem("theme");
+
+      if (currentTheme === "dark") {
+        document.body.classList.add("dark");
+      }
+
+      document.querySelector("h2").innerText = user;
+
+      function removeFunction() {
+        //   localStorage.removeItem("user");
+        localStorage.clear();
+      }
+
+      // console.log(localStorage.length);
+      // console.log(localStorage);
+
+      // for (let i = 0; i < localStorage.length; i++) {
+      //   let key = localStorage.key(i);
+      //   console.log(`${key}: ${localStorage.getItem(key)}`);
+      // }
+
+      // let keys = Object.keys(localStorage);
+      // for (let key of keys) {
+      //   console.log(`${key}: ${localStorage.getItem(key)}`);
+      // }
+
+      localStorage.newuser = JSON.stringify({ name: "john", age: 18 });
+      let users = JSON.parse(localStorage.newuser);
+      console.log(users.name);
+      console.log(users.age);
+    </script>
+  </body>
+</html>
