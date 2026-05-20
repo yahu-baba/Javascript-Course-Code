@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session Storage</title>
+  </head>
+  <body>
+    <h1>Session Storage</h1>
+    <input type="text" id="username" />
+    <button id="saveBtn">Save</button>
+    <button id="removeBtn">Remove</button>
+
+    <script>
+      let input = document.querySelector("#username");
+      let button = document.querySelector("#saveBtn");
+      let removebutton = document.querySelector("#removeBtn");
+
+      input.value = sessionStorage.getItem("username") || "";
+
+      button.addEventListener("click", () => {
+        // sessionStorage.setItem("username", input.value);
+        // sessionStorage.setItem("userage", 18);
+        let obj = { name: input.value, age: 18 };
+        sessionStorage.setItem("person", JSON.stringify(obj));
+        let user = JSON.parse(sessionStorage.person);
+        console.log(user.name);
+
+        sessionStorage.setItem("testing", "123");
+
+        for (let i = 0; i < sessionStorage.length; i++) {
+          let key = sessionStorage.key(i);
+          console.log(`${key} : ${sessionStorage.getItem(key)}`);
+        }
+        // alert("Saved!");
+      });
+
+      removebutton.addEventListener("click", () => {
+        // sessionStorage.removeItem("username");
+        sessionStorage.clear();
+        alert("Removed!");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session Storage Popup</title>
+  </head>
+  <body>
+    <script>
+      if (!sessionStorage.getItem("popupShown")) {
+        alert("welcome!");
+
+        sessionStorage.setItem("popupShown", "yes");
+      }
+    </script>
+  </body>
+</html>
