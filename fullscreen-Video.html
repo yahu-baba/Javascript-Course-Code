@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fullscreen Video</title>
+  </head>
+  <body>
+    <h1>Fullscreen Video</h1>
+    <video id="video" controls width="400">
+      <source src="videos/globe.mp4" type="video/mp4" />
+    </video>
+
+    <button id="fs">Fullscreen Video</button>
+
+    <script>
+      let video = document.querySelector("#video");
+      let btn = document.querySelector("#fs");
+
+      btn.addEventListener("click", () => {
+        video.requestFullscreen();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fullscreen Image</title>
+    <style>
+      ::backdrop {
+        background: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fullscreen Image</h1>
+    <img src="images/flower.jpg" id="img" width="300" />
+
+    <script>
+      const img = document.querySelector("#img");
+
+      img.addEventListener("click", () => {
+        img.requestFullscreen();
+      });
+    </script>
+  </body>
+</html>

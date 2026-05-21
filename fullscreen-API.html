@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fullscreen API</title>
+    <style>
+      #box {
+        width: 200px;
+        height: 200px;
+        padding: 15px;
+        margin: 10px;
+        background: lightcoral;
+        border: 1px solid #000;
+      }
+
+      #box:fullscreen {
+        background: lightblue;
+      }
+
+      #closebtn {
+        display: none;
+      }
+
+      #box:fullscreen #closebtn {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fullscreen API</h1>
+    <button id="btn">Open Fullscreen</button>
+    <button id="togglebtn">Toggle Fullscreen</button>
+
+    <div id="box">
+      <h2>hello world</h2>
+      <button id="closebtn">Exit Fullscreen</button>
+    </div>
+
+    <script>
+      let btn = document.querySelector("#btn");
+      let togglebtn = document.querySelector("#togglebtn");
+      let box = document.querySelector("#box");
+
+      btn.addEventListener("click", () => {
+        // document.documentElement.requestFullscreen();
+        box.requestFullscreen();
+      });
+
+      document.querySelector("#closebtn").addEventListener("click", () => {
+        document.exitFullscreen();
+      });
+
+      togglebtn.addEventListener("click", toggleFullScreen);
+
+      function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else {
+          document.exitFullscreen();
+        }
+      }
+
+      document.addEventListener("keydown", (event) => {
+        // console.log(event);
+        if (event.key == "Enter") {
+          toggleFullScreen();
+        }
+      });
+
+      if (document.fullscreenEnabled) {
+        console.log("Fullscreen supported.");
+      } else {
+        console.log("Fullscreen NOT supported.");
+      }
+
+      document.addEventListener("fullscreenchange", () => {
+        if (document.fullscreenElement) {
+          console.log("Entered Fullscreen");
+        } else {
+          console.log("Exited Fullscreen");
+        }
+      });
+    </script>
+  </body>
+</html>
