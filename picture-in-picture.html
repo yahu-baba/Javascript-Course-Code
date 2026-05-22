@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Picture-in-Picture</title>
+    <style>
+      /* video:picture-in-picture {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        border: 4px solid blue;
+      } */
+    </style>
+  </head>
+  <body>
+    <video id="video" controls width="400">
+      <source src="videos/globe.mp4" type="video/mp4" />
+    </video>
+    <br /><br />
+
+    <!-- <button id="pipBtn">Enable Picture in Picture</button>
+    <button id="exitpipBtn">Exit Picture in Picture</button> -->
+    <button id="togglepipBtn">Toggle Picture in Picture</button>
+
+    <script>
+      const video = document.querySelector("#video");
+      video.disablePictureInPicture = false;
+      // const pipBtn = document.querySelector("#pipBtn");
+      // const exitpipBtn = document.querySelector("#exitpipBtn");
+      const togglepipBtn = document.querySelector("#togglepipBtn");
+
+      // pipBtn.addEventListener("click", () => {
+      //   video.requestPictureInPicture();
+      // });
+
+      // exitpipBtn.addEventListener("click", () => {
+      //   document.exitPictureInPicture();
+      // });
+
+      togglepipBtn.addEventListener("click", () => {
+        if (document.pictureInPictureElement) {
+          document.exitPictureInPicture();
+        } else {
+          video.requestPictureInPicture();
+        }
+      });
+
+      video.addEventListener("enterpictureinpicture", () => {
+        togglepipBtn.textContent = "Exit Picture in picture";
+      });
+
+      video.addEventListener("leavepictureinpicture", () => {
+        togglepipBtn.textContent = "Enter Picture in picture";
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key == "Enter") {
+          if (document.pictureInPictureElement) {
+            document.exitPictureInPicture();
+          } else {
+            video.requestPictureInPicture();
+          }
+        }
+      });
+
+      // if ("pictureInPictureEnabled" in document) {
+      //   console.log("PIP Supported");
+      // } else {
+      //   console.log("PIP Not Supported");
+      // }
+    </script>
+  </body>
+</html>
