@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Geolocation API</title>
+  </head>
+  <body>
+    <h1>GeoLocation</h1>
+    <button id="btn">Get Location</button>
+    <button id="mapbtn">Open Map</button>
+
+    <script>
+      const btn = document.querySelector("#btn");
+      const mapbtn = document.querySelector("#mapbtn");
+
+      const watchId = navigator.geolocation.watchPosition((position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        console.log("Latitude: ", lat);
+        console.log("Longitude: ", lng);
+      });
+
+      setTimeout(() => {
+        navigator.geolocation.clearWatch(watchId);
+        console.log("Tracking Stopped");
+      }, 10000);
+
+      btn.addEventListener("click", () => {
+        // navigator.geolocation.getCurrentPosition(success, error, {
+        //   enableHighAccuracy: true,
+        //   // timeout: 10000,
+        //   // maximumAge: 0,
+        // });
+      });
+
+      function success(position) {
+        // console.log(position);
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        console.log("Latitude: ", lat);
+        console.log("Longitude: ", lng);
+        console.log("Accuracy: ", position.coords.accuracy);
+
+        console.log(position.toJSON());
+      }
+
+      function error(err) {
+        console.warn(`ERROR(${err.code} : ${err.message})`);
+      }
+
+      mapbtn.addEventListener("click", () => {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+
+          const url = `https://www.google.com/maps?q=${lat},${lng}`;
+
+          window.open(url, "_blank");
+        });
+      });
+    </script>
+  </body>
+</html>
