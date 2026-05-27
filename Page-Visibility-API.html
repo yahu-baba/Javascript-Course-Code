@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Page Visibility API</title>
+  </head>
+  <body>
+    <h1>Page Visibility API</h1>
+
+    <script>
+      const originalTitle = document.title;
+
+      document.addEventListener("visibilitychange", () => {
+        // console.log(document.visibilityState);
+        if (document.hidden) {
+          document.title = "Come Back 😢";
+        } else {
+          document.title = originalTitle;
+        }
+      });
+    </script>
+  </body>
+</html>

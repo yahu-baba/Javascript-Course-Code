@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Page Visibility API</title>
+  </head>
+  <body>
+    <h1>Page Visibility API : Timer Example</h1>
+    <h2 id="count">0</h2>
+
+    <script>
+      function fetchData() {
+        console.log("Fetching Data....");
+      }
+
+      setInterval(() => {
+        fetchData();
+      }, 5000);
+
+      // let count = 0;
+
+      // const timer = setInterval(() => {
+      //   if (!document.hidden) {
+      //     count++;
+      //     document.querySelector("#count").innerText = count;
+      //   }
+      // }, 1000);
+    </script>
+  </body>
+</html>
