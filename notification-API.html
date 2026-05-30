@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Notification API</title>
+  </head>
+  <body>
+    <h1>Notification API</h1>
+
+    <button id="notifyBtn">Show Notification</button>
+
+    <script>
+      var btn = document.querySelector("#notifyBtn");
+
+      btn.addEventListener("click", async () => {
+        const permission = await Notification.requestPermission();
+
+        if (permission === "granted") {
+          showNotification();
+        } else {
+          showError();
+        }
+      });
+
+      function showNotification() {
+        const notification = new Notification("Welcome!", {
+          body: "Thanks for enabling notifications.",
+          icon: "images/chat.png",
+          image: "images/flower.jpg",
+          silent: true,
+        });
+
+        setTimeout(() => {
+          notification.close();
+        }, 4000);
+
+        notification.onclick = () => {
+          window.open("https://www.yahubaba.com");
+        };
+
+        notification.onshow = () => {
+          console.log("Notification Shown");
+        };
+
+        notification.onclose = () => {
+          console.log("Notification Closed");
+        };
+      }
+
+      function showError() {
+        alert("Notification permission denied.");
+      }
+
+      // Notification.requestPermission().then((permission) => {
+      //   // console.log(permission);
+      //   if (Notification.permission === "granted") {
+      //     new Notification("Hello User!");
+      //   }
+      // });
+    </script>
+  </body>
+</html>
