@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Drag Drop API</title>
+    <style>
+      #box {
+        width: 120px;
+        padding: 20px;
+        background: orange;
+        cursor: grab;
+        text-align: center;
+      }
+
+      #target {
+        width: 300px;
+        height: 200px;
+        border: 3px dashed gray;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" draggable="true">Drag Me</div>
+
+    <div id="target">Drop Here</div>
+
+    <script>
+      const box = document.querySelector("#box");
+      const target = document.querySelector("#target");
+
+      box.addEventListener("dragstart", () => {
+        console.log("Dragging Started");
+      });
+
+      target.addEventListener("dragover", (event) => {
+        event.preventDefault();
+      });
+
+      target.addEventListener("drop", (event) => {
+        target.appendChild(box);
+        console.log("Dropped.");
+      });
+    </script>
+  </body>
+</html>

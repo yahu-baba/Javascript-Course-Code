@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Drag Drop - Trello</title>
+    <style>
+      .column {
+        border: 1px solid #000;
+        width: 150px;
+        min-height: 150px;
+        padding: 5px;
+        margin: 10px;
+        float: left;
+      }
+
+      .card {
+        background: lightblue;
+        margin: 1px;
+      }
+
+      .card.dragging {
+        background: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Trello - Drag Drop Todo List</h3>
+
+    <div class="column" id="todo">
+      <div class="card" draggable="true">Task 1</div>
+      <div class="card" draggable="true">Task 2</div>
+      <div class="card" draggable="true">Task 3</div>
+    </div>
+
+    <div class="column" id="done"></div>
+
+    <script>
+      const cards = document.querySelectorAll(".card");
+      const columns = document.querySelectorAll(".column");
+
+      cards.forEach((card) => {
+        card.addEventListener("dragstart", () => {
+          card.classList.add("dragging");
+        });
+
+        card.addEventListener("dragend", () => {
+          card.classList.remove("dragging");
+        });
+      });
+
+      columns.forEach((column) => {
+        column.addEventListener("dragover", (e) => {
+          e.preventDefault();
+
+          const dragging = document.querySelector(".dragging");
+
+          column.appendChild(dragging);
+        });
+      });
+    </script>
+  </body>
+</html>
