@@ -6,7 +6,9 @@
 
 ## Youtube Video link
 
-[JavaScript Course Video Playlist](https://www.youtube.com/playlist?list=PL0b6OzIxLPbx-BZTaWu_AF7hsKo_Fvsnf)
+[JavaScript Beginners Course Video Playlist](https://www.youtube.com/playlist?list=PL0b6OzIxLPbx-BZTaWu_AF7hsKo_Fvsnf)
+
+[JavaScript Advance Course Video Playlist](https://www.youtube.com/playlist?list=PL0b6OzIxLPbzvz4j1N4J8zCY8mu3l29MG)
 
 ## Follow Us
 
