@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Broadcast Channel 2</title>
+  </head>
+  <body>
+    <h1>Broadcast Channel - Page 2</h1>
+    <div id="messageBox"></div>
+
+    <script>
+      const channel = new BroadcastChannel("chat");
+
+      channel.onmessage = (event) => {
+        document
+          .querySelector("#messageBox")
+          .insertAdjacentHTML("beforeend", `<div>${event.data}</div>`);
+      };
+    </script>
+  </body>
+</html>

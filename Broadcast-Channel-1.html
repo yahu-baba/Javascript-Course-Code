@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Broadcast Channel</title>
+  </head>
+  <body>
+    <h1>Broadcast Channel</h1>
+
+    <input type="text" id="messageBox" />
+    <button onclick="sendMessage()">Send Message</button>
+
+    <script>
+      const channel = new BroadcastChannel("chat");
+
+      if ("BroadcastChannel" in window) {
+        console.log("Supported");
+      } else {
+        console.log("Not Supported");
+      }
+
+      function sendMessage() {
+        let message = document.querySelector("#messageBox").value;
+        channel.postMessage(message);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Broadcast Channel</title>
+    <style>
+      .dark {
+        color: #fff;
+        background: darkslategrey;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Broadcast Channel - Change Theme</h1>
+    <button id="themeBtn">Change Theme</button>
+
+    <script>
+      const channel = new BroadcastChannel("theme");
+
+      const themeBtn = document.querySelector("#themeBtn");
+
+      themeBtn.addEventListener("click", () => {
+        document.body.classList.add("dark");
+
+        const darkMode = document.body.classList.contains("dark");
+
+        channel.postMessage({ darkMode });
+      });
+    </script>
+  </body>
+</html>
