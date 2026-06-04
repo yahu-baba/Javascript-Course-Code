@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Intersection Observer 2</title>
+    <style>
+      h1 {
+        margin-bottom: 900px;
+      }
+      .card {
+        background: red;
+        width: 100px;
+        height: 100px;
+        margin-top: 200px;
+        margin-bottom: 350px;
+        opacity: 0;
+        transform: translateX(50px);
+        transition: 1s;
+      }
+
+      .card.show {
+        opacity: 1;
+        transform: translateX(0px);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Intersection Observer - Animated Cards</h1>
+    <div class="card">Card 1</div>
+    <div class="card">Card 2</div>
+    <div class="card">Card 3</div>
+
+    <script>
+      const cards = document.querySelectorAll(".card");
+
+      const observer = new IntersectionObserver((entries) => {
+        //console.log(entries);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          } else {
+            entry.target.classList.remove("show");
+          }
+        });
+      });
+
+      cards.forEach((card) => {
+        observer.observe(card);
+      });
+    </script>
+  </body>
+</html>

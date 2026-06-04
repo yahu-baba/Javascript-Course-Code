@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Intersection Observer - Video</title>
+    <style>
+      h1 {
+        margin-bottom: 900px;
+      }
+      video {
+        margin-bottom: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Intersection Observer - Play/Pause Video</h1>
+    <video width="400" controls>
+      <source src="videos/doctor.mp4" type="video/mp4" />
+    </video>
+
+    <script>
+      const video = document.querySelector("video");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          //console.log(entries);
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              video.play();
+            } else {
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+          // rootMargin: "200px",
+          // root:null
+        },
+      );
+
+      observer.observe(video);
+    </script>
+  </body>
+</html>

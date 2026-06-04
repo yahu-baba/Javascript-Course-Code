@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Intersection Observer - Lazy Loading</title>
+    <style>
+      h1 {
+        margin-bottom: 1000px;
+      }
+      .lazy {
+        width: 200px;
+        margin-bottom: 200px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lazy Loading Images</h1>
+    <img
+      class="lazy"
+      data-src="images/flower1.jpg"
+      src="images/placeholder.jpg"
+    />
+
+    <img
+      class="lazy"
+      data-src="images/flower2.jpg"
+      src="images/placeholder.jpg"
+    />
+
+    <img
+      class="lazy"
+      data-src="images/flower3.jpg"
+      src="images/placeholder.jpg"
+    />
+
+    <script>
+      const images = document.querySelectorAll(".lazy");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          //console.log(entries);
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+
+              img.src = img.dataset.src;
+
+              observer.unobserve(img);
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+          // rootMargin: "200px",
+          // root:null
+        },
+      );
+
+      images.forEach((img) => {
+        observer.observe(img);
+      });
+    </script>
+  </body>
+</html>

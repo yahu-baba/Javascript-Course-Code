@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Intersection Observer 1</title>
+    <style>
+      h1 {
+        margin-bottom: 900px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin-bottom: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Intersection Observer API</h1>
+    <div class="box"></div>
+
+    <script>
+      const box = document.querySelector(".box");
+
+      const observer = new IntersectionObserver((entries) => {
+        //console.log(entries);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            console.log("Box Visible");
+          }
+        });
+      });
+
+      observer.observe(box);
+    </script>
+  </body>
+</html>
