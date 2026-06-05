@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Web Speech API</title>
+  </head>
+  <body>
+    <h1>Voice Search</h1>
+    <input type="text" id="searchBox" />
+    <button id="voiceBtn">🎤</button>
+    
+    <script>
+      const btn = document.querySelector("#voiceBtn");
+
+      const recognition = new SpeechRecognition();
+
+      // recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = "en-IN";
+
+      btn.addEventListener("click", () => {
+        recognition.start();
+      });
+
+      recognition.onresult = (event) => {
+        // console.log(event);
+        const searchText = event.results[0][0].transcript;
+        document.querySelector("#searchBox").value = searchText;
+      };
+    </script>
+</html>
