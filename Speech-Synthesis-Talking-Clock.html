@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Web Speech Synthesis</title>
+  </head>
+  <body>
+    <h1>Web Speech : Talking Clock</h1>
+    <button id="timeBtn">Tell Time</button>
+
+    <script>
+      const timeBtn = document.querySelector("#timeBtn");
+
+      timeBtn.addEventListener("click", () => {
+        const now = new Date();
+
+        const timeString = now.toLocaleTimeString();
+
+        const speech = new SpeechSynthesisUtterance(
+          `The current time is ${timeString}`,
+        );
+
+        speechSynthesis.speak(speech);
+      });
+    </script>
+  </body>
+</html>

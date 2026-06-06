@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Web Speech : Page Reader</title>
+  </head>
+  <body>
+    <h1 id="title">JavaScript Tutorial</h1>
+
+    <p id="content">
+      JavaScript is a programming language used to create interactive websites
+      and web applications.
+    </p>
+
+    <button id="readBtn">Read Article</button>
+
+    <script>
+      const readBtn = document.querySelector("#readBtn");
+
+      readBtn.addEventListener("click", () => {
+        const title = document.querySelector("#title").textContent;
+        const content = document.querySelector("#content").textContent;
+
+        const speech = new SpeechSynthesisUtterance(title + ". " + content);
+
+        speechSynthesis.speak(speech);
+      });
+    </script>
+  </body>
+</html>
