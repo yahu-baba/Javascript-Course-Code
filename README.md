@@ -12,6 +12,6 @@
 
 ## Follow Us
 
-[www.yahubaba.com](https://www.yahubaba.com)
+[www.yoobaba.com](https://www.yoobaba.com)
 
-[Youtube Channel](https://www.youtube.com/@yahu-baba)
+[Youtube Channel](https://www.youtube.com/@yoo-baba)
